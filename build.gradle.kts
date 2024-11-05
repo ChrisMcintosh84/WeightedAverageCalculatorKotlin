@@ -6,6 +6,7 @@ plugins {
     application
     id("org.javamodularity.moduleplugin") version "1.8.12"
     id("org.openjfx.javafxplugin") version "0.0.13"
+    id("org.beryx.jlink") version "3.0.1"
 }
 
 val junitVersion = ("5.10.2")
@@ -46,12 +47,18 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.jar {
-    manifest {
-        attributes["Main-Class"] = application.mainClass
+jlink {
+    launcher {
+        name = "WavCal"
     }
-    configurations["compileClasspath"].forEach { file: File ->
-        from(zipTree(file.absoluteFile))
-    }
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
+
+//tasks.jar {
+//    manifest {
+//        attributes["Main-Class"] = application.mainClass
+//    }
+//    configurations["compileClasspath"].forEach { file: File ->
+//        from(zipTree(file.absoluteFile))
+//    }
+//    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//}

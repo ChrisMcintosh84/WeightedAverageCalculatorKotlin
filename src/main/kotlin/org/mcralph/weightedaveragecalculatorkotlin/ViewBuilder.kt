@@ -15,7 +15,7 @@ class ViewBuilder(private val model: Model, private val calculateResult: () -> U
 
     override fun build(): Region {
         val results = BorderPane().apply {
-            stylesheets += "org/mcralph/weightedaveragecalculatorkotlin/css/widgets.css"
+            stylesheets += "widgets.css"
             styleClass += "borderpane"
             top = Widgets().headingLabel("Weighted Average Calculator")
             center = createCenter()
